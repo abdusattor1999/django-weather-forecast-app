@@ -1,0 +1,37 @@
+{% include "index.html" %}
+
+{% block content %}
+<div class='container'>
+
+    {% if not error %}
+        <h1>{{ weather.city }}</h1>
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">Date</th>
+                <th scope="col">Condition</th>
+                <th scope="col">Temperature from</th>
+                <th scope="col">Temperature to</th>
+            </tr>
+            </thead>
+            <tbody>
+                {% for fore in weather.dates %}
+                    <tr>
+                        <th scope="row">{{ fore.date }}</th>
+                        <td>{{ fore.condition }}</td>
+                        <td>{{ fore.from }}</td>
+                        <td>{{ fore.to }}</td>
+                    </tr>
+                
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <div class="alert alert-primary" role="alert">
+            <h1 class="error">{{ error }}</h1>
+        </div>
+            
+    {% endif %}
+</div>
+
+{% endblock content %}

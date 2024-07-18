@@ -1,0 +1,33 @@
+{% extends "index.html" %}
+
+{% block content %}
+
+<div class='container'>
+    {% if history %}
+    <table class="table">
+        <thead class="thead-light">
+          <tr>
+            <th scope="col">City name</th>
+            <th scope="col">Count of searches</th>
+            <th scope="col">Last searched</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for one in history %}
+                <tr>
+                <th scope="row">{{ one.city }}</th>
+                <td>{{ one.search_count }}</td>
+                <td>{{ one.last_searched }}</td>
+                </tr>
+            {% endfor %}
+          
+        </tbody>
+      </table>
+    {% else %}
+    <div class="alert alert-primary" role="alert">
+        <h1 class="error">There is no any search </h1>
+    </div>
+    {% endif %}
+</div>
+
+{% endblock content %}
